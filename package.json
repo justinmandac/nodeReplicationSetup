@@ -1,0 +1,9 @@
+{
+    "name": "mysqlrepl_setup",
+    "description" : "Attempting to make MySQL Replication setup a bit easier",
+    "author": "Bien Justin Mandac <justinmandac@outlook.com>",
+    "version" : "0.0.2",
+    "dependencies" : {
+        "mysql" : ">=2.5.0"
+    }
+}
