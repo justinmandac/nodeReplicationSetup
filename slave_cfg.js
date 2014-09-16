@@ -1,7 +1,7 @@
 //Slave setup
 var tools       = require('./tools/utils');
 var conn_mod    = require('./tools/conn_module');
-var conn_obj    = new conn_mod(require('./cfg/slave_conn_opts.json')); //blocking read
+var conn_obj    = new conn_mod(require('./cfg/host_conn_opts.json')); //blocking read
 
 var master_opts = require('./cfg/master_opts.json');
 var m_host = 'master_host='+tools.enc(master_opts.host);
