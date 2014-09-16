@@ -1,7 +1,7 @@
 {
     "host": "192.168.254.126",
     "port":3306,
-    "user":"repluser2",
+    "user":"repluser20",
     "pw":"P@ssw0rd",
     "log":"mysql-bin.000011",
     "pos": 120

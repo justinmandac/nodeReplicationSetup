@@ -11,7 +11,7 @@ var m_log          = 'master_log_file='  + tools.enc(master_opts.log);
 var m_pos          = 'master_log_pos='   + master_opts.pos;
 var master_set_str = 'CHANGE MASTER TO ' + m_host + ',' + m_port + ',' + m_user + ',' + m_pwd + ',' + m_log + ',' + m_pos + ';';
 var testQuery      = "SHOW DATABASES;";
-var query          = testQuery;
+var query          = master_set_str;
 
 connection.connect(function (err) {
     if (err) {
