@@ -1,17 +1,18 @@
 //Slave setup
-var mysql          = require('mysql');
-var connection     = mysql.createConnection(require('./cfg/host_conn_opts.json'));
-var tools          = require('./tools/utils');
-var master_opts    = require('./cfg/master_opts.json');
-var m_host         = 'master_host='      + tools.enc(master_opts.host);
-var m_port         = 'master_port='      + master_opts.port;
-var m_user         = 'master_user='      + tools.enc(master_opts.user);
-var m_pwd          = 'master_password="' + master_opts.pw + '"'; //passwords have to be enclosed in double quotes
-var m_log          = 'master_log_file='  + tools.enc(master_opts.log);
-var m_pos          = 'master_log_pos='   + master_opts.pos;
-var master_set_str = 'CHANGE MASTER TO ' + m_host + ',' + m_port + ',' + m_user + ',' + m_pwd + ',' + m_log + ',' + m_pos + ';';
-var testQuery      = "SHOW DATABASES;";
-var query          = master_set_str;
+var settings       = JSON.parse(process.argv[2]),
+    mysql          = require('mysql'),
+    tools          = require('./tools/utils'),
+    connection     = mysql.createConnection(settings.connection_settings),
+    master_opts    = require(settings.master_settings),
+    m_host         = 'master_host='      + tools.enc(master_opts.host),
+    m_port         = 'master_port='      + master_opts.port,
+    m_user         = 'master_user='      + tools.enc(master_opts.user),
+    m_pwd          = 'master_password="' + master_opts.pw + '"', //passwords have to be enclosed in double quotes
+    m_log          = 'master_log_file='  + tools.enc(master_opts.log),
+    m_pos          = 'master_log_pos='   + master_opts.pos,
+    master_set_str = 'CHANGE MASTER TO ' + m_host + ',' + m_port + ',' + m_user + ',' + m_pwd + ',' + m_log + ',' + m_pos + ';',
+    testQuery      = "SHOW DATABASES;",
+    query          = master_set_str;
 
 connection.connect(function (err) {
     if (err) {
@@ -19,7 +20,7 @@ connection.connect(function (err) {
         return;
     }
 
-    console.log('Connected as id' + connection.threadId);
+    console.log('[' + connection.threadId + ']Connected to ' + settings.connection_settings.user + '@' + settings.connection_settings.host);
 
 });
 
@@ -31,5 +32,5 @@ connection.query(query, function (err, rows, fields) {
 });
 
 connection.end(function (err) {
-    console.log('Connection terminated.');
+    console.log('[' + connection.threadId + ']Connection terminated from '+ settings.connection_settings.user + '@' + settings.connection_settings.host);
 });
