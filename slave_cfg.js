@@ -16,7 +16,15 @@ var master_set_str = 'CHANGE MASTER TO ' + m_host + ',' + m_port + ',' + m_user 
 var testQuery      = "SHOW DATABASES;";
 var query          = testQuery;
 
-connection.connect();
+connection.connect(function (err) {
+    if (err) {
+        console.err('Error connecting:' + err.stack);
+        return;
+    }
+
+    console.log('Connected as id' + connection.threadId);
+
+});
 
 connection.query(query, function (err, rows, fields) {
     if(err) throw err;
@@ -25,4 +33,6 @@ connection.query(query, function (err, rows, fields) {
 
 });
 
-connection.end();
+connection.end(function (err) {
+    console.log('Connection terminated.');
+});
