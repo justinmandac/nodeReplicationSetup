@@ -1,4 +1,4 @@
-var enc = function(str){
+var enc = function (str) {
     return '\''+str+'\'';
 }
 

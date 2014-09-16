@@ -8,4 +8,4 @@ console.log(opts.length + ' host(s) to be configured.');
 
 opts.forEach(function (val, i) {
     var configurator = process.fork(mod_name, [JSON.stringify(val)]);
-})
+});
