@@ -1,7 +1,8 @@
 //main module
 var opts     = require('./cfg/settings.json'),
     process  = require('child_process'),
-    mod_name = 'slave_cfg.js';
+    mod_name = './tools/slave_cfg.js';
+
 
 console.log(opts.length + ' host(s) to be configured.');
 
