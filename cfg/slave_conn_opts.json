@@ -1,7 +1,0 @@
-{
-    "user":"root",
-    "password":"P@ssw0rd",
-    "host":"192.168.254.120",
-    "port": 3306,
-    "database": ""
-}
