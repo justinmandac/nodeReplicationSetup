@@ -16,4 +16,6 @@ Replication setup tool for MySQL Servers.
 
 ## To-Do
 * Enable configuration of master hosts.
+    * Come up with new settings file structure
+    * Finish master server config script
 * Enable modification of `my.cnf` (for *nix servers) or `my.ini` for Windows machines. 
