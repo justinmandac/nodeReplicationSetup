@@ -1,8 +1,10 @@
 //master setup
-var settings       = JSON.parse(process.argv[2]),
-    mysql          = require('mysql'),
-    tools          = require('../tools/utils'),
-    connection     = mysql.createConnection(settings.connection_settings);
+var settings       = JSON.parse(process.argv[2]);
+var mysql          = require('mysql');
+var tools          = require('../tools/utils');
+var connection     = mysql.createConnection(settings.connection_settings);
+var testQuery      = 'SHOW DATABASES;';
+var query          = testQuery;
 
 connection.connect(function (err) {
     if (err) {
@@ -12,4 +14,17 @@ connection.connect(function (err) {
 
     console.log('[' + connection.threadId + ']Connected to ' + settings.connection_settings.user + '@' + settings.connection_settings.host);
 
+});
+
+connection.query(query, function (err, rows, fields) {
+    if (err) {
+        throw err;
+    }
+
+    console.log(rows);
+
+});
+
+connection.end(function (err) {
+    console.log('[' + connection.threadId + ']Connection terminated from ' + settings.connection_settings.user + '@' + settings.connection_settings.host);
 });
