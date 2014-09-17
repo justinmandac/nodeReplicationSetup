@@ -25,7 +25,7 @@ connection.connect(function (err) {
 });
 
 connection.query(query, function (err, rows, fields) {
-    if(err) {
+    if (err) {
         throw err;
     }
 
