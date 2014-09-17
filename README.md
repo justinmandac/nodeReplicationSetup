@@ -15,4 +15,5 @@ Replication setup tool for MySQL Servers.
 3. Run. `node main.js`
 
 ## To-Do
+* Enable configuration of master hosts.
 * Enable modification of `my.cnf` (for *nix servers) or `my.ini` for Windows machines. 
