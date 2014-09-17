@@ -4,6 +4,7 @@ var mysql          = require('mysql');
 var tools          = require('../tools/utils');
 var connection     = mysql.createConnection(settings.connection_settings);
 var testQuery      = 'SHOW DATABASES;';
+var userQuery      = 'GRANT REPLICATION SLAVE ON USER@HOST IDENTIFIED BY PASSWORD;';
 var query          = testQuery;
 
 connection.connect(function (err) {
