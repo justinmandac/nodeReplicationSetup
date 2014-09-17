@@ -18,4 +18,6 @@ Replication setup tool for MySQL Servers.
 * Enable configuration of master hosts.
     * Come up with new settings file structure
     * Finish master server config script
+        * Add queries for creating replication user on master server
+        * Acquire parameters from master to build settings for slave (i.e. log position, binlog file).
 * Enable modification of `my.cnf` (for *nix servers) or `my.ini` for Windows machines. 
