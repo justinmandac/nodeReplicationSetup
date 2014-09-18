@@ -3,10 +3,10 @@ var mysql   = require('mysql');
 var settings= null;
 
 function ConnectionObject (params) {
-    this.settings = params;
+    settings = params;
 }
 
-ConnectionObject.prototype.execute = function (query) {
+ConnectionObject.prototype.execute = function execute (query) {
     var connection;
     if  (settings == null) {
         return;
