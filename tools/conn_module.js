@@ -1,9 +1,11 @@
 //encapsulate connect-query-disconnect methods to simplify configuration scripts.
-var mysql   = require('mysql');
-var settings= null;
+var mysql     = require('mysql');
+var settings  = null;
+var conn_name = null;
 
 function ConnectionObject (params) {
     settings = params;
+    conn_name= '\'' + settings.user + '\'' + '@' + settings.host;
 }
 
 ConnectionObject.prototype.execute = function execute (query) {
@@ -16,7 +18,7 @@ ConnectionObject.prototype.execute = function execute (query) {
         if (err) {
             throw err;
         }
-        console.log('[' + connection.threadId + ']Connected to ' + settings.host);
+        console.log('[' + connection.threadId + ']Connected to ' + conn_name);
 
     });
     connection.query(query, function (err, row, fields) {
@@ -29,7 +31,7 @@ ConnectionObject.prototype.execute = function execute (query) {
         if (err) {
             throw err;
         }
-        console.log('[' + connection.threadId + ']Connection terminated from ' + settings.host);
+        console.log('[' + connection.threadId + ']Connection terminated from ' + conn_name);
     });
 }
 
