@@ -32,3 +32,5 @@ ConnectionObject.prototype.execute = function (query) {
         console.log('[' + connection.threadId + ']Connection terminated from ' + settings.host);
     });
 }
+
+module.exports = ConnectionObject;
