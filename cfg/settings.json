@@ -15,23 +15,5 @@
             "log":"mysql-bin.000011",
             "pos": 120
         }
-    },
-
-    {
-        "connection_settings": {
-            "user":"root",
-            "password":"P@ssw0rd",
-            "host":"192.168.254.120",
-            "port": 3306,
-            "database": ""
-        },
-        "master_settings" : {
-            "host": "192.168.254.126",
-            "port":3306,
-            "user":"repluser26",
-            "pw":"P@ssw0rd",
-            "log":"mysql-bin.000011",
-            "pos": 120
-        }
     }
 ]
