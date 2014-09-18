@@ -8,7 +8,7 @@ function ConnectionObject (params) {
     conn_name= '\'' + settings.user + '\'' + '@' + settings.host;
 }
 
-ConnectionObject.prototype.execute = function execute (query) {
+ConnectionObject.prototype.execute = function execute (query, params) {
     var connection;
     if  (settings == null) {
         return;
@@ -21,7 +21,7 @@ ConnectionObject.prototype.execute = function execute (query) {
         console.log('[' + connection.threadId + ']Connected to ' + conn_name);
 
     });
-    connection.query(query, function (err, row, fields) {
+    connection.query(query, params, function (err, row, fields) {
         if (err) {
             throw err;
         }
